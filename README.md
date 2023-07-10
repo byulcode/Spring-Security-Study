@@ -12,3 +12,15 @@
 + 스프링 시큐리티는 UserDetailsManager 계약의 여러 구현을 제공한다.
   + InMemoryUserDetailsManger, JdbcDetailsManager, LdapUserDetailsManager가 있다
 + JdbcDetailsManager은 JDBC를 직접 이용하므로 애플리케이션이 다른 프레임워크에 고정되지 않는다는 이점이 있다.
+
+### Chapter 4. 암호 처리
++ PasswordEncoder는 인증 논리에서 암호를 처리하는 가장 중요한 책임을 담당한다.
++ 스프링 시큐리티는 해싱 알고리즘에 여러 대안을 제공하므로 필요한 구현을 선택하기만 하면 된다
+  + NoOpPasswordEncoder - 암호를 인코딩하지 않고 일반 텍스트로 유지. 구현 예제로만 사용
+  + StandardPasswordEncoder - SHA-256을 이용해 암호를 해시. 구식 방법
+  + Pbkdf2PasswordEncoder - PBKDF2를 이용
+  + BCryptPasswordEncoder - bcrypt 강력 해싱 함수로 암호를 인코딩함
+  + SCryptPasswordEncoder - scrypt 해싱 함수로 암호를 인코딩함
++ DelegatingPasswordEncoder을 사용해 다양한 암호 인코더를 갖추고 특정 구성에 따라 선택하는 방식을 구현할 수 있다.
++ 키 생성기는 암호화 알고리즘에 이용되는 키를 생성하도록 도와주는 유틸리티 객체다
++ 암호기는 데이터 암호화와 복호화를 수행하도록 도와주는 유틸리티 객체다
