@@ -1,4 +1,4 @@
-package study.springsecurity.entity;
+package study.springsecurity.entity.enums;
 
 public enum EncryptionAlgorithm {
 

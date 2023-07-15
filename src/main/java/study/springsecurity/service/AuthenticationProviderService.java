@@ -1,8 +1,6 @@
 package study.springsecurity.service;
 
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Service;
 import study.springsecurity.model.CustomUserDetails;
 
 @Service
+@AllArgsConstructor
 public class AuthenticationProviderService implements AuthenticationProvider {
 
     private JpaUserDetailsService jpaUserDetailsService;

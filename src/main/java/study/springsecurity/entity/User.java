@@ -3,6 +3,7 @@ package study.springsecurity.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import study.springsecurity.entity.enums.EncryptionAlgorithm;
 
 import java.util.List;
 

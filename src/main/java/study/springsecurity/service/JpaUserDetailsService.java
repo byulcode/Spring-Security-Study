@@ -1,6 +1,6 @@
 package study.springsecurity.service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import study.springsecurity.repository.UserRepository;
 import java.util.function.Supplier;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
