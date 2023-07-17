@@ -19,12 +19,12 @@ public class ProjectConfig {
 
         var user1 = User.withUsername("John")
                 .password("12345")
-                .authorities("ROLE_ADMIN")
+                .roles("ADMIN")
                 .build();
 
         var user2 = User.withUsername("Jane")
                 .password("12345")
-                .authorities("ROLE_MANAGER")  //ROLE 접두사가 있으므로 GrantAuthority는 역할을 나타낸다
+                .roles("MANAGER")  //roles() 메서드의 매개 변수에는 ROLE_ 접두사를 포함하지 않는다
                 .build();
 
         manager.createUser(user1);  //사용자는 userDetailsService에 의해 추가되고 관리된다.
