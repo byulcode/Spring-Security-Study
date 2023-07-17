@@ -19,12 +19,12 @@ public class ProjectConfig {
 
         var user1 = User.withUsername("John")
                 .password("12345")
-                .authorities("READ")
+                .authorities("ROLE_ADMIN")
                 .build();
 
         var user2 = User.withUsername("Jane")
                 .password("12345")
-                .authorities("WRITE")
+                .authorities("ROLE_MANAGER")  //ROLE 접두사가 있으므로 GrantAuthority는 역할을 나타낸다
                 .build();
 
         manager.createUser(user1);  //사용자는 userDetailsService에 의해 추가되고 관리된다.
@@ -40,11 +40,12 @@ public class ProjectConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(
-                        (authz) -> authz.anyRequest()
-                                .hasAnyAuthority("WRITE"))
-                .httpBasic();
+        http.httpBasic();
+
+        http.authorizeHttpRequests(
+                (authz) -> authz.anyRequest()
+                        .hasRole("ADMIN")); //엔드포인트에 접근할 수 있는 역할을 지정한다. 여기에 ROLE_ 접두사는 나오지 않는다.
+
         return http.build();
     }
 }
