@@ -2,7 +2,6 @@ package study.springsecurity.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -48,12 +47,10 @@ public class ProjectConfig {
         );
 
         http.authorizeHttpRequests((authz) -> authz
-                .requestMatchers(HttpMethod.GET, "/a")
-                .authenticated()
-                .requestMatchers(HttpMethod.POST, "/a")
-                .authenticated()
+                .requestMatchers("/a/b/**")
+                    .authenticated()
                 .anyRequest()
-                .denyAll());    //다른 경로에 대한 모든 요청 거부
+                    .permitAll());    //다른 경로에 대한 모든 요청 수락
 
         http.csrf().disable();        //HTTP POST 방식 경로를 호출할 수 있게 CSRF 비활성화
 
