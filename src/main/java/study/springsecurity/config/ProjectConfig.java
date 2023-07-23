@@ -49,8 +49,10 @@ public class ProjectConfig {
         http.authorizeHttpRequests((authz) -> authz
                 .requestMatchers("/a/b/**")
                     .authenticated()
+                .requestMatchers("/product/{code:^[0-9]*$}")
+                    .permitAll()
                 .anyRequest()
-                    .permitAll());    //다른 경로에 대한 모든 요청 수락
+                    .denyAll());    //다른 경로에 대한 모든 요청 수락
 
         http.csrf().disable();        //HTTP POST 방식 경로를 호출할 수 있게 CSRF 비활성화
 
