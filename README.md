@@ -60,3 +60,15 @@ Spring Security 학습용 레파지토리
 + 주의사항
   + authorities() 메서드 이용 - [ROLE_] 접두사 붙여주기
   + roles() 메서드 이용 - 접두사 필요 없음
+
+### Chapter 8. 권한 부여 구성 : 제한 적용
+특정한 요청 그룹에만 권한 부여 제약 조건을 적용하는 예제
++ 경로와 HTTP 방식에 따라 권한 부여 규칙을 구성할 요청을 지정한다
++ 선택기 메서드로 엔드포인트 선택한다
+  + MVC 선택기, 앤트 선택기, 정규식 선택기가 있음
+  + Spring Boot3, Spring Security 6.0 부터는 deprecated됨. 대신 requestMatchers() 사용
++ 경로와 HTTP 방식에 따라 권한 부여 규칙을 구성할 요청을 지정한다
+
++ permitAll() vs authenticated()
+  + permitAll() : 나머지 모든 엔드포인트에 대해 모든 요청을 허용한다
+  + authenticated() : 인증된 사용자에게만 나머지 모든 요청을 허용한다
