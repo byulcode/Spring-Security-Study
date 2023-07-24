@@ -2,22 +2,23 @@ package study.springsecurity.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.logging.Logger;
 
-public class AuthenticationLoggingFilter implements Filter{
+public class AuthenticationLoggingFilter extends OncePerRequestFilter {
 
     private final Logger logger = Logger.getLogger(AuthenticationLoggingFilter.class.getName());
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        var httpRequest = (HttpServletRequest) request;
-        var requestId = httpRequest.getHeader("Request-Id");
+        String requestId = request.getHeader("Request-Id");
 
         logger.info("Successfully authenticated request with id " + requestId); //요청 ID 값과 이벤트 기록
 
-        chain.doFilter(request, response);  //요청을 필터 체인의 다음 필터에 전달
+        filterChain.doFilter(request, response);
     }
 }
