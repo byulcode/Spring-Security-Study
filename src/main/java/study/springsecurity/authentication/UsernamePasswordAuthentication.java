@@ -1,4 +1,4 @@
-package study.springsecurity.authentication.proxy;
+package study.springsecurity.authentication;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
